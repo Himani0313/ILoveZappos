@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,18 +18,18 @@ public class MainActivity extends AppCompatActivity {
 
         searchView=(SearchView) findViewById(R.id.searchView);
         searchView.setQueryHint("Enter the search term");
-        textView = (TextView)findViewById(R.id.textView);
+        //textView = (TextView)findViewById(R.id.textView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                textView.setText(query);
+                //textView.setText(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                textView.setText(newText);
+               // textView.setText(newText);
                 return false;
             }
         });
