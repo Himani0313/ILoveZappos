@@ -29,11 +29,11 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         app:imgUrl = "@{model.thumbnailImageUrl}"
         android:id="@+id/imageView2"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/searchView"
         android:layout_centerHorizontal="true"
         />
@@ -45,7 +45,8 @@
         android:id="@+id/name"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_alignParentEnd="true" />
 
     <TextView
@@ -56,17 +57,20 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp"
         android:id="@+id/brandName"
+        android:gravity="center"
         android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="@{model.price}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/price"
         android:layout_below="@+id/brandName"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/border"/>
 
 
 </RelativeLayout>

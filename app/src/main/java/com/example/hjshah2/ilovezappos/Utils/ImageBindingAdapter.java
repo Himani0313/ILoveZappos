@@ -21,7 +21,7 @@ public class ImageBindingAdapter {
         if(url == null || url.isEmpty())
             view.setImageResource(R.mipmap.ic_launcher);
         else
-            Picasso.with(view.getContext()).load(url).error(R.mipmap.ic_launcher).into(view);
+            Picasso.with(view.getContext()).load(url).into(view);
     }
 //    @BindingAdapter("android:src")
 //    public static void setImageUri(ImageView view, String url){
