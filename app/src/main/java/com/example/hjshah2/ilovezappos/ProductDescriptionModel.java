@@ -13,7 +13,7 @@ public class ProductDescriptionModel extends BaseObservable{
     private String name;
     private String price;
     private String brandname;
-    private String thumbnail;
+    private String thumbnailImageUrl;
     private String originalPrice;
     private String off;
     private boolean exists;
@@ -25,6 +25,7 @@ public class ProductDescriptionModel extends BaseObservable{
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.name);
     }
 
     @Bindable
@@ -34,6 +35,7 @@ public class ProductDescriptionModel extends BaseObservable{
 
     public void setPrice(String price) {
         this.price = price;
+        notifyPropertyChanged(BR.price);
     }
 
     @Bindable
@@ -55,12 +57,12 @@ public class ProductDescriptionModel extends BaseObservable{
     }
 
     @Bindable
-    public String getThumbnail() {
-        return thumbnail;
+    public String getThumbnailImageUrl() {
+        return thumbnailImageUrl;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setThumbnailImageUrl(String thumbnailImageUrl) {
+        this.thumbnailImageUrl = thumbnailImageUrl;
     }
 
     @Bindable

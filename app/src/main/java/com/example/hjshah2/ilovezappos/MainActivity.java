@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                             pdm.setName(product.getProductName());
                             pdm.setBrandname(product.getBrandName());
                             pdm.setPrice(product.getPrice());
-                            pdm.setThumbnail(product.getThumbnailImageUrl());
+                            pdm.setThumbnailImageUrl(product.getThumbnailImageUrl());
 
                             bind.setModel(pdm);
                         }
