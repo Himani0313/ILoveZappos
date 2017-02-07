@@ -27,15 +27,28 @@
         android:id="@+id/searchView"
         android:background="#fff"
         android:layout_alignParentEnd="true" />
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/ic_zappos"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="100dp"
+        android:id="@+id/relative2"
+        android:background="@drawable/border"
+        android:visibility="invisible">
     <ImageView
         android:layout_width="175dp"
         android:layout_height="175dp"
         app:imgUrl = "@{model.thumbnailImageUrl}"
         android:id="@+id/imageView2"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/searchView"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
+        android:visibility="invisible"
         />
 
     <TextView
@@ -70,8 +83,8 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/border"/>
+        />
 
-
+    </RelativeLayout>
 </RelativeLayout>
 </layout>

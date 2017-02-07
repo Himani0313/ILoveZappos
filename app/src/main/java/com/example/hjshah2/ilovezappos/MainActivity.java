@@ -5,7 +5,10 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -28,12 +31,17 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding bind;
     private ZapposAPI zService;
     private Bitmap bmp;
+    RelativeLayout relativeLayout;
+    ImageView imageView,imageView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this,R.layout.activity_main);
         bind.setModel(pdm = new ProductDescriptionModel());
         searchView =(SearchView)findViewById(R.id.searchView);
+        relativeLayout = (RelativeLayout)findViewById(R.id.relative2);
+        imageView = (ImageView)findViewById(R.id.imageView2);
+        imageView2 = (ImageView)findViewById(R.id.imageView);
         searchView.setQueryHint("Enter the search term");
         //textView = (TextView)findViewById(R.id.textView);
         zService = APIUtils.getService();
@@ -53,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<productList> call, Response<productList> response) {
                         if(response.isSuccessful()){
                             //name.setText(response.body().getCurrentResultCount());
+                            relativeLayout.setVisibility(View.VISIBLE);
+                            imageView.setVisibility(View.VISIBLE);
+                            imageView2.setVisibility(View.INVISIBLE);
                             productList pl =response.body();
                             ProductDescription product = pl.getResults().get(0);
                             pdm.setName(product.getProductName());
