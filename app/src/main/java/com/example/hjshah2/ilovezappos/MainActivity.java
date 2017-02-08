@@ -28,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     SearchView searchView;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     private ProductDescriptionModel pdm;
     private ActivityMainBinding bind;
     private ZapposAPI zService;
-    private FloatingActionButton cart,fav;
+    public FloatingActionButton cart,fav;
     Animation animationbounce;
     Animation animationcustom;
 
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         animationcustom.setAnimationListener(this);
         cart = (FloatingActionButton)findViewById(R.id.floatingActionButton2);
         fav = (FloatingActionButton)findViewById(R.id.floatingActionButton3);
+        cart.setTag(R.mipmap.ic_cartadd);
+        fav.setTag(R.mipmap.ic_favourite);
         //textView = (TextView)findViewById(R.id.textView);
         zService = APIUtils.getService();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -115,12 +118,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             @Override
             public void onClick(View v) {
                 cart.startAnimation(animationbounce);
+
             }
         });
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fav.startAnimation(animationcustom);
+
             }
         });
     }
@@ -128,10 +133,18 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     @Override
     public void onAnimationStart(Animation animation) {
         if(animation == animationbounce){
-            Toast.makeText(MainActivity.this,"Item added to cart",Toast.LENGTH_SHORT).show();
+            Integer resource = (Integer) cart.getTag();
+            if (resource == R.mipmap.ic_cartadd)
+                Toast.makeText(MainActivity.this,"Item added to cart",Toast.LENGTH_SHORT).show();
+            if (resource == R.mipmap.ic_cartloaded)
+                Toast.makeText(MainActivity.this,"Item already in cart",Toast.LENGTH_SHORT).show();
         }
         if(animation == animationcustom){
-            Toast.makeText(MainActivity.this,"Item added to favorites",Toast.LENGTH_SHORT).show();
+            Integer resource = (Integer) fav.getTag();
+            if (resource == R.mipmap.ic_favourite)
+                Toast.makeText(MainActivity.this,"Item added to Favorites",Toast.LENGTH_SHORT).show();
+            if (resource == R.mipmap.ic_done)
+            Toast.makeText(MainActivity.this,"Item already in Favorites",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -139,19 +152,16 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     public void onAnimationEnd(Animation animation) {
         if(animation == animationbounce){
             cart.setImageResource(R.mipmap.ic_cartloaded);
+            cart.setTag(R.mipmap.ic_cartloaded);
         }
         if(animation == animationcustom){
             fav.setImageResource(R.mipmap.ic_done);
+            fav.setTag(R.mipmap.ic_done);
         }
     }
 
     @Override
     public void onAnimationRepeat(Animation animation) {
-        if(animation == animationbounce){
-            Toast.makeText(MainActivity.this,"Already added to cart",Toast.LENGTH_SHORT).show();
-        }
-        if(animation == animationcustom){
-            Toast.makeText(MainActivity.this,"Already added to favorites",Toast.LENGTH_SHORT).show();
-        }
+
     }
 }
