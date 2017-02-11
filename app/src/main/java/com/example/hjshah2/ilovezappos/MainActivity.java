@@ -75,7 +75,10 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                         if(response.isSuccessful()){
                             //name.setText(response.body().getCurrentResultCount());
 
-
+                            cart.setImageResource(R.mipmap.ic_cartadd);
+                            cart.setTag(R.mipmap.ic_cartadd);
+                            fav.setImageResource(R.mipmap.ic_favourite);
+                            fav.setTag(R.mipmap.ic_favourite);
                             productList pl =response.body();
                             if (pl == null){
                                 pdm.setName("Could not find the product" + newText);
